@@ -1,0 +1,70 @@
+Minimum packages (also layers in this case) needed for a project
+-----------------------------------------------------------------
+model
+    - ItemDTO       (DTO = Data Transfer Object)
+dao
+    - ItemDao (interface)
+    - ItemDaoImpl
+service
+    - ItemService (interface)
+    - ItemServiceImpl
+view/presentation
+    - ItemView
+
+Other packages we will have:
+utility
+    - Change
+
+Other Classes:
+VendingMachineMain.java         (App.java equivalent)
+
+
+
+Identify the Entities
+----------------------
+Item
+        - itemId
+        - itemName
+        - itemCost
+        - itemStock
+
+
+
+User stories
+-------------
+1. display all items and their prices when the program starts
+        1.1) items with itemStock = 0 should not be displayed
+2. exit the program
+3. vend an item
+        3.1) user inputs money (before an item can be selected)
+        3.2) user selects one item: ask the use to confirm their choice
+        3.3) if inputAmount < itemCost, display message "insufficient funds" and display the inputAmount
+        3.4) if itemCost <= inputAmount, calculate changeDue (changeDue = inputAmount - itemCost),
+             then send changeDue to the Change class which will send back the change in categories
+        3.5) if item is vended, itemStock = itemStock - 1 accordingly
+4. item stock to be maintained in a file
+        4.1) when program starts read all items from the file into a collection
+        4.2) when the program terminates write all the items in the collection to the file
+
+
+Dao methods
+------------
+displayItemsAndPrices() {}  // returns an ArrayList of items and their prices
+vendItem() {} // this decreases the itemStock by one
+readItemsFromFile() {}
+writeItemsToFile() {}
+
+Steps in creation
+-----------------
+1st model
+2nd dao
+3rd service
+4th view
+
+
+
+items will be displayed
+menu
+----
+1) Vend an Item
+2) Exit

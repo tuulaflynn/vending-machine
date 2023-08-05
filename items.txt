@@ -1,0 +1,6 @@
+1,salt and vinegar megabag crisps,1.25,5
+2,starbar,0.85,10
+3,twirl,1.50,20
+4,water,1.25,12
+5,oasis,1.75,4
+6,fruit pastels,2,25

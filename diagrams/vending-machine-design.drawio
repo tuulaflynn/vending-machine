@@ -1,0 +1,168 @@
+<mxfile host="app.diagrams.net" modified="2023-08-05T15:51:12.344Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="xnKCJjuFZBjZJDPaHN0m" version="21.6.5" type="device">
+  <diagram name="Page-1" id="MLULbn_aw23PMCRo727d">
+    <mxGraphModel dx="2567" dy="1061" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-1" target="U_qKPdhGnKlovVOc4ps0-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-1" value="Menu&lt;br&gt;1. Vend an item&lt;br&gt;2. Exit" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-5" target="U_qKPdhGnKlovVOc4ps0-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-5" value="displayItemsAndPrices()" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="10" y="-20" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-8" value="ArrayList displayNameAndPrices()&lt;br&gt;- create ArrayList&amp;lt;Object&amp;gt; called nameAndPriceCollection&lt;br&gt;- traverse through itemsCollections&lt;br&gt;- for each item if itemStock != 0 add itemName and itemPrice to nameAndPriceCollection&lt;br&gt;- display .get(i) and .get(i+1) on the same line where&lt;br&gt;i = nameAndPriceCollection.size() / 2&lt;br&gt;i.e. the item&#39;s price will be the next index after the item&#39;s name and these will be displayed on the same line." style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-120" y="-330" width="210" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-9" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-145" y="115" as="sourcePoint" />
+            <mxPoint x="10" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-10" target="U_qKPdhGnKlovVOc4ps0-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-10" value="readItemsFromFile()&lt;br&gt;- create an ArrayList&amp;lt;ItemDto&amp;gt; called itemsCollection, which will store the items from the file&lt;br&gt;- items.txt must already exist and is a CSV (comma separated value) file&lt;br&gt;- separate the data by commas, each value will be a property of ItemDto&lt;br&gt;- create a ItemDto object, itemDto, for each line&lt;br&gt;- add itemDto to itemsCollection" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-370" y="-250" width="210" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-12" target="U_qKPdhGnKlovVOc4ps0-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-12" value="Start&lt;br&gt;readItemsFromFile()" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-220" y="-20" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-16" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-335" y="-20" as="sourcePoint" />
+            <mxPoint x="-220" y="20" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-17" target="U_qKPdhGnKlovVOc4ps0-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-17" target="U_qKPdhGnKlovVOc4ps0-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-17" value="while (userChoice != 2)" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry y="160" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-21" value="End&lt;br&gt;writeItemsToFile()" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-220" y="185" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-23" value="writeItemToFilel()&lt;br&gt;- the file you are writing to gets overwritten&lt;br&gt;- write to items.txt file by&lt;br&gt;&amp;gt; parse properties of ItemDTO to a string&lt;br&gt;&amp;gt; use fileWriter.write(string)&lt;br&gt;&amp;gt; or PrintWriter(fileWriter) and println(string) which adds a new line after the argument&lt;br&gt;&amp;gt; use flush() at the end&lt;br&gt;&amp;gt; finally close the stream created by the FileWriter with close()&amp;nbsp;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-360" y="280" width="210" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-24" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-23">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-270" y="270" as="sourcePoint" />
+            <mxPoint x="-220" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-25" value="False" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-60" y="198" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-26" target="U_qKPdhGnKlovVOc4ps0-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-26" value="user inputs money&lt;br&gt;userMoney&amp;nbsp;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="180" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-28" value="FileReader&lt;br&gt;BufferedReader&lt;br&gt;while hasNextLine() { .readline()&lt;br&gt;}" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-570" y="-220" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-30" target="U_qKPdhGnKlovVOc4ps0-48">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="680" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-30" value="user inputs itemId" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="180" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-35" target="U_qKPdhGnKlovVOc4ps0-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-35">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="958" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-35" value="if choice is valid&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;userMoney &amp;lt;= itemCost" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="878" y="160" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-37" value="Display &quot;insufficient funds&quot;&lt;br&gt;and userMoney" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="869.5" y="10" width="177" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-39" value="No" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="950" y="120" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-43" value="Yes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="950" y="300" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-44" target="U_qKPdhGnKlovVOc4ps0-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-44" value="display&lt;br&gt;Change(changeDue)&lt;br&gt;where changeDue = userMoney - itemCost" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="856.75" y="350" width="211.25" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-45" value="decreaseItemStock()&amp;nbsp;&lt;br&gt;(itemStock = itemStock -1)" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1158" y="357.5" width="154.38" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-48" target="U_qKPdhGnKlovVOc4ps0-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-48" value="confirm user choice&lt;br&gt;fetchItem()" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="150" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-50" value="Yes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="816.75" y="198" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-52" value="True" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="165" y="198" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-53" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-48" target="U_qKPdhGnKlovVOc4ps0-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="720" y="300" as="sourcePoint" />
+            <mxPoint x="480" y="360" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="720" y="360" />
+              <mxPoint x="500" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-54" value="No" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="710" y="308" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-55" value="&lt;i&gt;&lt;u&gt;Come back to this loop, maybe exit or main menu option&lt;/u&gt;&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="420" y="357.5" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-56" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-37" target="U_qKPdhGnKlovVOc4ps0-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="960" y="30" as="sourcePoint" />
+            <mxPoint x="1010" y="-20" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="960" y="-80" />
+              <mxPoint x="80" y="-80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-59" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="960" y="-80" as="sourcePoint" />
+            <mxPoint x="1240" y="360" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1240" y="-80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
