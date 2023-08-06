@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface ItemService {
     List<ItemDto> readItemsFromFile() throws FileNotFoundException, IOException;
-    ArrayList<Object> displayItemsAndPrices();
-    ItemDto fetchItem(int itemId);
+    String displayItemsAndPrices();
+    ItemDto fetchItem(String itemName);
     boolean decreaseItemStock(int itemId);
     boolean writeItemsToFile();
 }

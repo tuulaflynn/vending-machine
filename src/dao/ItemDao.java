@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface ItemDao {
     List<ItemDto> readItemsFromFile() throws FileNotFoundException, IOException;
-    ArrayList<Object> displayItemsAndPrices();
-    ItemDto fetchItem(int itemId);
+    List<Object> displayItemsAndPrices();
+    ItemDto fetchItem(String itemName);
     boolean decreaseItemStock(int itemId);
     boolean writeItemsToFile();
 

@@ -27,13 +27,21 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public ArrayList<Object> displayItemsAndPrices() {
-        return itemDao.displayItemsAndPrices();
+    public String displayItemsAndPrices() {     // QUESTION: is it fine to change the return type here? It was List<Object> for the method in the dao layer.
+        List<Object> displayItemsAndPrices = itemDao.displayItemsAndPrices();       // Saving the returned result in the variable displayItemAndPrices.
+        String displayItemsAndPricesString = "\n";
+
+        for (int i = 0; i < (displayItemsAndPrices.size()); i = i + 2) {
+            // As the data for an item spans two consecutive element in the collection, the increment expression is in steps of 2.
+            displayItemsAndPricesString += displayItemsAndPrices.get(i) + " £" + displayItemsAndPrices.get(i+1) + "\n";
+        }
+        return displayItemsAndPricesString;
+        // future edit for this method: make cost variable have 2dp i.e. 1.5 -> 1.50.
     }
 
     @Override
-    public ItemDto fetchItem(int itemId) {
-        return itemDao.fetchItem(itemId);
+    public ItemDto fetchItem(String ItemName) {    // As itemNames are unique (otherwise their stock would be combined).
+        return itemDao.fetchItem(ItemName);
     }
 
     @Override

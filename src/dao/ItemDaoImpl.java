@@ -12,6 +12,7 @@ public class ItemDaoImpl implements ItemDao{
 
     // The collection to store the data from the file.
     List<ItemDto> itemsCollection = new ArrayList<ItemDto>();
+    List<Object> nameAndPriceCollection = new ArrayList<Object>();
 
     @Override
     public List<ItemDto> readItemsFromFile() throws FileNotFoundException, IOException {
@@ -40,24 +41,43 @@ public class ItemDaoImpl implements ItemDao{
 
         // Return a collection copy through the layers so the original items within the collection cannot be edited
         // accidentally due to them having more than one reference pointing to them.
-        // COME BACK TO THIS TOMORROW, RIGHT NOW I AM SENDING THE WHOLE ORIGINAL COLLECTION WHICH I CAN'T DO BUT THE METHOD
-        // I HAVE IS ONLY FOR COPYING INDIVIDUAL OBJECTS.
-        return itemsCollection;
+        List<ItemDto> itemsCollectionCopy = new ArrayList<ItemDto>();
+
+        for (int i = 0; i < itemsCollection.size(); i++) {
+            // Each object in the collection gets copied, then added to the return collection, itemsCollectionCopy.
+            itemsCollectionCopy.add(itemsCollection.get(i).copyItemObject());
+        }
+        return itemsCollectionCopy;
     }
 
     @Override
-    public ArrayList<Object> displayItemsAndPrices() {
-        System.out.println("display items and prices");
-        return null;
+    public List<Object> displayItemsAndPrices() {
+        // The collection must be cleared when the loop returns to main menu as items that now have stock 0
+        // will not be left in the collection as residue.
+        nameAndPriceCollection.clear();
+
+        for (ItemDto item : itemsCollection) {
+            if (item.getItemStock() != 0) {     // Checks the item is in stock before it is added to the collection
+                nameAndPriceCollection.add(item.getItemName());
+                nameAndPriceCollection.add(item.getItemCost());
+            }
+        }
+        return nameAndPriceCollection;
     }
 
     @Override
-    public ItemDto fetchItem(int itemId) {
+    public ItemDto fetchItem(String itemName) {
+        for(ItemDto item: itemsCollection) {
+            if(item.getItemName().equals(itemName)) {
+                return item;
+            }
+        }
         return null;
     }
 
     @Override
     public boolean decreaseItemStock(int itemId) {
+
         return false;
     }
 

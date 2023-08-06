@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-08-05T15:51:12.344Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="xnKCJjuFZBjZJDPaHN0m" version="21.6.5" type="device">
+<mxfile host="app.diagrams.net" modified="2023-08-06T20:47:40.843Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="HEMGBOUD-vREher0q-Vk" version="21.6.5" type="device">
   <diagram name="Page-1" id="MLULbn_aw23PMCRo727d">
-    <mxGraphModel dx="2567" dy="1061" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2052" dy="868" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -16,7 +16,7 @@
         <mxCell id="U_qKPdhGnKlovVOc4ps0-5" value="displayItemsAndPrices()" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="10" y="-20" width="140" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="U_qKPdhGnKlovVOc4ps0-8" value="ArrayList displayNameAndPrices()&lt;br&gt;- create ArrayList&amp;lt;Object&amp;gt; called nameAndPriceCollection&lt;br&gt;- traverse through itemsCollections&lt;br&gt;- for each item if itemStock != 0 add itemName and itemPrice to nameAndPriceCollection&lt;br&gt;- display .get(i) and .get(i+1) on the same line where&lt;br&gt;i = nameAndPriceCollection.size() / 2&lt;br&gt;i.e. the item&#39;s price will be the next index after the item&#39;s name and these will be displayed on the same line." style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-8" value="ArrayList displayNameAndPrices()&lt;br&gt;- create ArrayList&amp;lt;Object&amp;gt; called nameAndPriceCollection&lt;br&gt;- traverse through itemsCollections&lt;br&gt;- for each item if itemStock != 0 add itemName and itemPrice to nameAndPriceCollection&lt;br&gt;- display .get(i) and .get(i+1) on the same line from nameAndPriceCollection i.e. the item&#39;s price will be the next index after the item&#39;s name and these will be displayed on the same line." style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="-120" y="-330" width="210" height="210" as="geometry" />
         </mxCell>
         <mxCell id="U_qKPdhGnKlovVOc4ps0-9" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-8">
@@ -83,7 +83,7 @@
             <mxPoint x="680" y="220" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="U_qKPdhGnKlovVOc4ps0-30" value="user inputs itemId" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+        <mxCell id="U_qKPdhGnKlovVOc4ps0-30" value="user inputs itemName" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="420" y="180" width="160" height="80" as="geometry" />
         </mxCell>
         <mxCell id="U_qKPdhGnKlovVOc4ps0-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="U_qKPdhGnKlovVOc4ps0-35" target="U_qKPdhGnKlovVOc4ps0-37">
