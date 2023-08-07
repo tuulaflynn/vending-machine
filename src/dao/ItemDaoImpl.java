@@ -12,7 +12,11 @@ public class ItemDaoImpl implements ItemDao{
 
     // The collection to store the data from the file.
     List<ItemDto> itemsCollection = new ArrayList<ItemDto>();
-    List<Object> nameAndPriceCollection = new ArrayList<Object>();
+    List<ItemDto> itemsCollectionCopy = new ArrayList<ItemDto>();       // QUESTION: is it correct to create this as a class variable?
+    // I could create it inside fetchItems() but instead I chose to create it once and clear it every time fetchItems()
+    // is used. Is there a preffered way? I feel like I am filtering through the collection a lot, i.e. in this layer
+    // and then in the service layer but this also seems like this way it would be easier to update in the future.
+
 
     @Override
     public List<ItemDto> readItemsFromFile() throws FileNotFoundException, IOException {
@@ -41,8 +45,9 @@ public class ItemDaoImpl implements ItemDao{
 
         // Return a collection copy through the layers so the original items within the collection cannot be edited
         // accidentally due to them having more than one reference pointing to them.
-        List<ItemDto> itemsCollectionCopy = new ArrayList<ItemDto>();
+        // List<ItemDto> itemsCollectionCopy = new ArrayList<ItemDto>();        this is now a class variable
 
+        // instead I could call fetchItems here and just return that?
         for (int i = 0; i < itemsCollection.size(); i++) {
             // Each object in the collection gets copied, then added to the return collection, itemsCollectionCopy.
             itemsCollectionCopy.add(itemsCollection.get(i).copyItemObject());
@@ -50,19 +55,18 @@ public class ItemDaoImpl implements ItemDao{
         return itemsCollectionCopy;
     }
 
-    @Override
-    public List<Object> displayItemsAndPrices() {
-        // The collection must be cleared when the loop returns to main menu as items that now have stock 0
-        // will not be left in the collection as residue.
-        nameAndPriceCollection.clear();
 
-        for (ItemDto item : itemsCollection) {
-            if (item.getItemStock() != 0) {     // Checks the item is in stock before it is added to the collection
-                nameAndPriceCollection.add(item.getItemName());
-                nameAndPriceCollection.add(item.getItemCost());
-            }
+    @Override
+    public List<ItemDto> fetchItems() {
+        // The collection must be cleared when the method is called, so items will not be duplicated in the collection
+        itemsCollectionCopy.clear();
+
+        // Return a collection copy through the layers so the original items within the collection cannot be edited
+        // accidentally due to them having more than one reference pointing to them.
+        for (ItemDto item: itemsCollection) {
+            itemsCollectionCopy.add(item);
         }
-        return nameAndPriceCollection;
+        return itemsCollectionCopy;
     }
 
     @Override

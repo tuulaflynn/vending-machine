@@ -6,6 +6,7 @@ import service.ItemServiceImpl;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 // Dealing with exceptions in this layer
@@ -33,7 +34,12 @@ public class ItemView {
         do {
             System.out.println("****************************************************");
             System.out.println("VENDING MACHINE");
-            System.out.println(itemService.displayItemsAndPrices());
+            List<ItemDto> itemsCollection = itemService.fetchItemsNonZeroStock();
+            String displayNameAndPrice = "\n";
+            for (int i = 0; i < itemsCollection.size(); i++) {
+                displayNameAndPrice += itemsCollection.get(i).getItemName() + "  £" + itemsCollection.get(i).getItemCost() + "\n";
+            }
+            System.out.println(displayNameAndPrice);
             System.out.println("-----------------------------------------------------");
             System.out.println("Select an option ");
             System.out.println("1. Vend an item");

@@ -7,6 +7,7 @@ import model.ItemDto;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ItemServiceImpl implements ItemService {
@@ -27,15 +28,26 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public String displayItemsAndPrices() {     // QUESTION: is it fine to change the return type here? It was List<Object> for the method in the dao layer.
-        List<Object> displayItemsAndPrices = itemDao.displayItemsAndPrices();       // Saving the returned result in the variable displayItemAndPrices.
-        String displayItemsAndPricesString = "\n";
+    public List<ItemDto> fetchItemsNonZeroStock() {
+        List<ItemDto> itemsCollection = itemDao.fetchItems();
 
-        for (int i = 0; i < (displayItemsAndPrices.size()); i = i + 2) {
-            // As the data for an item spans two consecutive element in the collection, the increment expression is in steps of 2.
-            displayItemsAndPricesString += displayItemsAndPrices.get(i) + " £" + displayItemsAndPrices.get(i+1) + "\n";
+        Iterator<ItemDto> iterator = itemsCollection.iterator();
+        // Creating an iterator for the collection itemsCollection, it currently points to before the first element.
+        while (iterator.hasNext()) {
+            ItemDto item = iterator.next();
+            // iterator.next() returns the next element in the collection and moves the iterator to the next position.
+            // As the iterator initially points to before the first item, it points to the first item, and
+            // in the loops after, the next element.
+            if (item.getItemStock() == 0) {
+                // can't do 'iterator.methods from dao class' as it is just a pointer, it has to be assigned the value before methods can be used on it.
+                iterator.remove();
+                // using the iterators method remove to safely remove the last element returned by the iterator.
+                // It is best to use remove() when removing elements during iteration.
+                // An ConcurrentModificationException occurs if in a for loop an object is removed (the collection is modified)
+                // of the collection that is being iterated through
+            }
         }
-        return displayItemsAndPricesString;
+        return itemsCollection;
         // future edit for this method: make cost variable have 2dp i.e. 1.5 -> 1.50.
     }
 
