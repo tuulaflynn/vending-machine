@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDaoImpl implements ItemDao{
+    // QUESTION: should class varaibles be private? e.g. lines 16 and 17?
+
 
     // The collection to store the data from the file.
     List<ItemDto> itemsCollection = new ArrayList<ItemDto>();
     List<ItemDto> itemsCollectionCopy = new ArrayList<ItemDto>();       // QUESTION: is it correct to create this as a class variable?
     // I could create it inside fetchItems() but instead I chose to create it once and clear it every time fetchItems()
-    // is used. Is there a preffered way? I feel like I am filtering through the collection a lot, i.e. in this layer
+    // is used. Is there a preferred way? I feel like I am filtering through the collection a lot, i.e. in this layer
     // and then in the service layer but this also seems like this way it would be easier to update in the future.
 
 
@@ -42,12 +44,14 @@ public class ItemDaoImpl implements ItemDao{
             itemsCollection.add(itemDto);
 
         }
-
         // Return a collection copy through the layers so the original items within the collection cannot be edited
         // accidentally due to them having more than one reference pointing to them.
+
         // List<ItemDto> itemsCollectionCopy = new ArrayList<ItemDto>();        this is now a class variable
 
-        // instead I could call fetchItems here and just return that?
+        // QUESTION: Here I could create a dto object and call fetchItems method on it to achieve itemsCollectionCopy.
+        // Creating an object feels a bit unnecessary but the code traversing through the collection is repeated in fetchItems(). What is the better way?
+        // Should I make fetchItems static?
         for (int i = 0; i < itemsCollection.size(); i++) {
             // Each object in the collection gets copied, then added to the return collection, itemsCollectionCopy.
             itemsCollectionCopy.add(itemsCollection.get(i).copyItemObject());
@@ -77,12 +81,6 @@ public class ItemDaoImpl implements ItemDao{
             }
         }
         return null;
-    }
-
-    @Override
-    public boolean decreaseItemStock(int itemId) {
-
-        return false;
     }
 
     @Override

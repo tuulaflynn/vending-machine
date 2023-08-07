@@ -59,8 +59,8 @@ public class ItemDto {
     }*/
     @Override
     public String toString() {
-        return ("item id: " + this.itemId + " | item name: " + this.itemName + " | item cost: " + this.itemCost +
-                " | item stock: " + this.itemStock + "\n");
+        return ("item id:" + this.itemId + " | item name:'" + this.itemName + "' | item cost:" + this.itemCost +
+                " | item stock:" + this.itemStock + "\n");
     }
 
     public ItemDto copyItemObject() {

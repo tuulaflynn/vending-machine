@@ -11,6 +11,6 @@ public interface ItemService {
     List<ItemDto> readItemsFromFile() throws FileNotFoundException, IOException;
     List<ItemDto> fetchItemsNonZeroStock ();
     ItemDto fetchItem(String itemName);
-    boolean decreaseItemStock(int itemId);
+    boolean checkVendPossible(double userMoney,ItemDto item);
     boolean writeItemsToFile();
 }

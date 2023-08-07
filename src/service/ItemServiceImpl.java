@@ -56,9 +56,12 @@ public class ItemServiceImpl implements ItemService {
         return itemDao.fetchItem(ItemName);
     }
 
-    @Override
-    public boolean decreaseItemStock(int itemId) {
-        return itemDao.decreaseItemStock(itemId);
+    public boolean checkVendPossible(double userMoney, ItemDto item) {
+        if (userMoney >= item.getItemCost()) {
+            item.setItemStock(item.getItemStock() - 1);     // decreasing the stock by 1 as the item has been vended
+            return true;
+        }
+        return false;
     }
 
     @Override

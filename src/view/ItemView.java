@@ -1,6 +1,7 @@
 package view;
 
 import model.ItemDto;
+import service.Change;
 import service.ItemService;
 import service.ItemServiceImpl;
 
@@ -36,8 +37,8 @@ public class ItemView {
             System.out.println("VENDING MACHINE");
             List<ItemDto> itemsCollection = itemService.fetchItemsNonZeroStock();
             String displayNameAndPrice = "\n";
-            for (int i = 0; i < itemsCollection.size(); i++) {
-                displayNameAndPrice += itemsCollection.get(i).getItemName() + "  £" + itemsCollection.get(i).getItemCost() + "\n";
+            for (ItemDto item: itemsCollection) {
+                displayNameAndPrice += item.getItemName() + "  £" + item.getItemCost() + "\n";
             }
             System.out.println(displayNameAndPrice);
             System.out.println("-----------------------------------------------------");
@@ -54,14 +55,24 @@ public class ItemView {
                 System.out.println("Enter money (numerical values only): ");
                 Double userMoney = scan.nextDouble();       // could add a try except for if the user enter a non-numeric value.
                 scan.nextLine();        // To correctly take the scanner to the end of the entered line.
-                System.out.println(userMoney);
 
                 System.out.println("Enter the name of the item you want to vend: ");
                 String name = scan.nextLine();      // need to account for if there is a space
 
                 ItemDto itemNamed = itemService.fetchItem(name);
                 if (itemNamed != null) {
-                    System.out.println(itemNamed);
+                    boolean vendPossible = itemService.checkVendPossible(userMoney, itemNamed);
+                    if (vendPossible) {  // == true not needed in the condition
+                        System.out.println("Item has been vended");
+                        System.out.println("Your change is...");
+                        double changeDuePennies = (userMoney - itemNamed.getItemCost()) * 100;     // QUESTION: I could do and call these two lines in service (within the checkVendPossible method)
+                        System.out.println(Change.change(changeDuePennies));
+
+                    }
+                    else {
+                        System.out.println("Insufficient funds");
+                        System.out.println("Money returned: £" + userMoney);
+                    }
                 }
                 else {
                     System.out.println("There is no item in the vending machine with name '" + name + "'.");

@@ -1,9 +1,11 @@
+import service.ChangeCoins;
 import service.ItemService;
 import service.ItemServiceImpl;
 import view.ItemView;
 
 public class VendingMachineMain {
     public static void main(String[] args) {
+        System.out.println(ChangeCoins.PENNIES.getValue());
 
     // Create only one object of the view class to allow the main to call the view, which intern calls service -> dao.
         ItemView itemView = new ItemView();
