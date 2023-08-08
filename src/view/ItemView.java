@@ -8,6 +8,7 @@ import service.ItemServiceImpl;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Formatter;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -62,36 +63,47 @@ public class ItemView {
 
             if (userChoice.equals("1")) {
                 System.out.println("Enter money (numerical values only): ");
-                Double userMoney = scan.nextDouble();       // could add a try except for if the user enter a non-numeric value.
-                scan.nextLine();        // To correctly take the scanner to the end of the entered line.
+                Double userMoney;
+                try {
+                    userMoney = scan.nextDouble();
+                } catch (InputMismatchException e) {
+                    System.out.println("Error. Only digits can be entered. Returning to main menu...");
+                    continue;       // Taken to the while condition.
+                } finally {
+                    scan.nextLine();        // To correctly take the scanner to the end of the entered line.
+                }
+
 
                 System.out.println("Enter the name of the item you want to vend: ");
                 String name = scan.nextLine();      // need to account for if there is a space
 
+                ItemDto itemNamed;
                 try {
-                    ItemDto itemNamed = itemService.fetchItem(name);
-
-                    if (itemNamed != null) {
-                        String vendPossible = itemService.checkAndVendIfPossible(userMoney, itemNamed);
-                        if (vendPossible != null) {
-                            System.out.println("Item has been vended");
-                            System.out.println("Your change is...");
-                            System.out.println(vendPossible);
-
-                        } else {
-                            System.out.println("Insufficient funds");
-                            formatter = new Formatter();
-                            System.out.println("Money returned: £" + formatter.format("%.2f", userMoney));
-                        }
-                    } else {
-                        System.out.println("There is no item in the vending machine with name '" + name + "'.");
-                        System.out.println("Names are case sensitive, use the name given in the menu. Your money has been refunded. Returning to menu...");
-                    }
+                    itemNamed = itemService.fetchItem(name);
                 } catch (NoItemInventoryException e1) {
                     System.out.println(e1.getMessage());
+                    continue;   // Taken to the while condition.
                 }
 
-            } else if (userChoice.equals("2")) {
+                if (itemNamed != null) {
+                    String vendPossible = itemService.checkAndVendIfPossible(userMoney, itemNamed);
+                    if (vendPossible != null) {
+                        System.out.println("Item has been vended");
+                        System.out.println("Your change is...");
+                        System.out.println(vendPossible);
+
+                    } else {
+                        System.out.println("Insufficient funds");
+                        formatter = new Formatter();
+                        System.out.println("Money returned: £" + formatter.format("%.2f", userMoney));
+                    }
+                } else {
+                    System.out.println("There is no item in the vending machine with name '" + name + "'.");
+                    System.out.println("Names are case sensitive, use the name given in the menu. Your money has been refunded. Returning to menu...");
+                }
+            }
+
+            else if (userChoice.equals("2")) {
                 try {
                     itemService.writeItemsToFile();
                 } catch (FileNotFoundException e1) {
@@ -100,10 +112,12 @@ public class ItemView {
                 System.out.println("Exiting program. Vending machine files have been updated. ");
                 // QUESTION:
                 // break; is unnecessary as the condition will fail on the next while loop anyway.
+            }
 
-            } else {
+            else {
                 System.out.println("Invalid entry. Please select an option by entering only the number.");
             }
+
         } while (!userChoice.equals("2"));
     }
 
