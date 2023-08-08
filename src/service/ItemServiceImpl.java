@@ -2,11 +2,10 @@ package service;
 
 import dao.ItemDao;
 import dao.ItemDaoImpl;
+import exceptions.NoItemInventoryException;
 import model.ItemDto;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -48,12 +47,16 @@ public class ItemServiceImpl implements ItemService {
             }
         }
         return itemsCollection;
-        // future edit for this method: make cost variable have 2dp i.e. 1.5 -> 1.50.
     }
 
     @Override
-    public ItemDto fetchItem(String ItemName) {    // As itemNames are unique (otherwise their stock would be combined).
-        return itemDao.fetchItem(ItemName);
+    public ItemDto fetchItem(String ItemName) throws NoItemInventoryException{    // As itemNames are unique (otherwise their stock would be combined).
+        ItemDto itemFetched = itemDao.fetchItem(ItemName);
+        if (itemFetched.getItemStock() == 0) {
+            NoItemInventoryException e1 = new NoItemInventoryException();
+            throw e1;
+        }
+        return itemFetched;
     }
 
     public String checkAndVendIfPossible(double userMoney, ItemDto item) {
@@ -70,7 +73,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public boolean writeItemsToFile() {
+    public boolean writeItemsToFile() throws FileNotFoundException {
         return itemDao.writeItemsToFile();      // as itemDao.writeItemsToFile return a boolean value.
     }
 }

@@ -1,7 +1,3 @@
-import service.Change;
-import service.ChangeCoins;
-import service.ItemService;
-import service.ItemServiceImpl;
 import view.ItemView;
 
 public class VendingMachineMain {
@@ -11,7 +7,6 @@ public class VendingMachineMain {
         // which returns to method which called it in the view layer which then outputs info to the user,
         // it is also returned to where it is called in the main method but we have not utilised this in this program.
         ItemView itemView = new ItemView();
-
 
         itemView.readItemsFromFile();
         itemView.homeScreen();

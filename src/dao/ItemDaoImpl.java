@@ -4,7 +4,6 @@ import model.ItemDto;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Formatter;
 import java.util.List;
 
 public class ItemDaoImpl implements ItemDao{
@@ -66,9 +65,7 @@ public class ItemDaoImpl implements ItemDao{
 
         // Return a collection copy through the layers so the original items within the collection cannot be edited
         // accidentally due to them having more than one reference pointing to them.
-        for (ItemDto item: itemsCollection) {
-            itemsCollectionCopy.add(item);
-        }
+        itemsCollectionCopy.addAll(itemsCollection);
         return itemsCollectionCopy;
     }
 
@@ -83,7 +80,15 @@ public class ItemDaoImpl implements ItemDao{
     }
 
     @Override
-    public boolean writeItemsToFile() {
-        return false;
+    public boolean writeItemsToFile() throws FileNotFoundException {
+        PrintWriter pw = new PrintWriter("items.txt");
+        String line;
+        for (ItemDto item: itemsCollection) {
+            line = item.getItemId() + "," + item.getItemName() + "," + item.getItemCost() + "," + item.getItemStock();
+            pw.println(line);
+        }
+        pw.flush();
+        pw.close();
+        return true;
     }
 }

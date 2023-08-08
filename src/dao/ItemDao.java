@@ -12,6 +12,6 @@ public interface ItemDao {
     List<ItemDto> readItemsFromFile() throws FileNotFoundException, IOException;
     List<ItemDto> fetchItems();
     ItemDto fetchItem(String itemName);
-    boolean writeItemsToFile();
+    boolean writeItemsToFile() throws FileNotFoundException;
 
 }
