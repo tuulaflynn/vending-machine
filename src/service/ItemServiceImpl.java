@@ -56,12 +56,17 @@ public class ItemServiceImpl implements ItemService {
         return itemDao.fetchItem(ItemName);
     }
 
-    public boolean checkVendPossible(double userMoney, ItemDto item) {
+    public String checkAndVendIfPossible(double userMoney, ItemDto item) {
         if (userMoney >= item.getItemCost()) {
-            item.setItemStock(item.getItemStock() - 1);     // decreasing the stock by 1 as the item has been vended
-            return true;
+            decreaseItemStock(item);    // Decrease the stock by 1 as the item has been vended.
+            double changeDuePennies = (userMoney - item.getItemCost()) * 100;     // QUESTION: I could do and call these two lines in service (within the checkVendPossible method)
+            return Change.change(changeDuePennies);
         }
-        return false;
+        return null;
+    }
+
+    public void decreaseItemStock(ItemDto itemDto) {
+        itemDto.setItemStock(itemDto.getItemStock() - 1);
     }
 
     @Override

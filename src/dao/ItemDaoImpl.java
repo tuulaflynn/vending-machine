@@ -1,15 +1,14 @@
 package dao;
 
 import model.ItemDto;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
 
 public class ItemDaoImpl implements ItemDao{
-    // QUESTION: should class varaibles be private? e.g. lines 16 and 17?
+    // QUESTION: should class variables be private? e.g. lines 16 and 17?
 
 
     // The collection to store the data from the file.
