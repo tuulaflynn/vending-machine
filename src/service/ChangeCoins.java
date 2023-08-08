@@ -1,8 +1,8 @@
 package service;
-// Used chatGPT to help with this enum class as I am unsure.
+// Used chatGPT to help with this enum class as I am unsure on enums.
 public enum ChangeCoins {
     // These constants are attached (like methods) to ChangeCoins class.
-    // They can be called like a static method 'ChangeCoins.twentyPence' and when they are called (initialised)
+    // They can be called like a static method 'ChangeCoins.QUARTERS' and when they are called (initialised)
     // the private constructor is run. Which we have set so the value in the bracket of the constant is
     // associated to ... one of the constants?
     QUARTERS (0.25),
@@ -10,7 +10,7 @@ public enum ChangeCoins {
     NICKELS(0.5),
     PENNIES(0.01);
 
-    // We don't need the constructor or method of bracketed value of the coins as we don't use them in the program.
+    // We don't need the constructor or method or the bracketed value of the coins, as we don't use them in the program.
     // I have left them in for future understanding of enums.
     private final double monetaryValue;
 
@@ -19,6 +19,7 @@ public enum ChangeCoins {
         this.monetaryValue = monetaryValue;
 
     }
+
     public double getValue() {
         return monetaryValue;
     }

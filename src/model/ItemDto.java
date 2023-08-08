@@ -1,9 +1,7 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ItemDto {
+
     private int itemId;
     private String itemName;
     private double itemCost;
@@ -48,15 +46,6 @@ public class ItemDto {
         this.itemStock = itemStock;
     }
 
-/*    @Override
-    public String toString() {
-        return "{" +
-                "itemId=" + itemId +
-                ", itemName='" + itemName + '\'' +
-                ", itemCost=" + itemCost +
-                ", itemStock=" + itemStock +
-                '}' + "\n";
-    }*/
     @Override
     public String toString() {
         return ("item id:" + this.itemId + " | item name:'" + this.itemName + "' | item cost:" + this.itemCost +
@@ -68,15 +57,4 @@ public class ItemDto {
         return copiedItemDto;
     }
 
-/*  I couldn't make this work as it would have to be static to be able to be used.
-    public List<ItemDto> copyItemsCollection(List<ItemDto> itemsCollection) {
-
-        List<ItemDto> itemsCollectionCopy = new ArrayList<ItemDto>();
-
-        for (int i = 0; i < itemsCollection.size(); i++) {
-            // Each object in the collection gets copied, then added to the return collection, itemsCollectionCopy.
-            itemsCollectionCopy.add(itemsCollection.get(i).copyItemObject());
-        }
-        return itemsCollectionCopy;
-    }*/
 }
