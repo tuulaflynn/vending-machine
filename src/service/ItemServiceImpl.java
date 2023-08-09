@@ -66,8 +66,7 @@ public class ItemServiceImpl implements ItemService {
 
     public String checkAndVendIfPossible(double userMoney, ItemDto item) {
         if (userMoney >= item.getItemCost()) {
-            decreaseItemStock(item);    // Decrease the stock by 1 as the item has been vended.
-            // QUESTION: I could do and call the following 2 lines in view layer. Which is better?
+            decreaseItemStock(item);        // Decrease the stock by 1 as the item has been vended.
             double changeDuePennies = (userMoney - item.getItemCost()) * 100;
             return Change.change(changeDuePennies);
         }

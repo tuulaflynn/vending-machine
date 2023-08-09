@@ -20,7 +20,7 @@ public class ItemView {
     // Object to format correct output (2 d.p) for English currency.
     Formatter formatter = new Formatter();
 
-    public void readItemsFromFile() {           // QUESTION: is it bad to use the same method name but change the return type? As I don't see a need for it to return anything here.
+    public void readItemsFromFile() {
         try {
             itemService.readItemsFromFile();
         } catch (FileNotFoundException e) {
@@ -36,15 +36,16 @@ public class ItemView {
 
         do {
             List<ItemDto> itemsCollection = itemService.fetchItemsNonZeroStock();
+
             Formatter formattedCost;        // To display prices to 2 d.p.
-            // QUESTION: is it best to have the Formatter type outside the for loop ? Or does it not matter as I could have it on line 42.
 
             System.out.println("****************************************************");
             System.out.println("VENDING MACHINE");
 
             // Traverses through itemsCollection to output itemName and itemPrice (formatted to 2 d.p.) on each line.
             for (ItemDto item : itemsCollection) {
-                formatter = new Formatter();        // Reassigns formatter, so it does not hold any information for another item.
+                formatter = new Formatter();  // Reassigns formatter, so it does not hold any information for another item.
+                // This is undesired to create a new object for each iteration of the loop - look into a different solution not using Formatter to avoid this.
                 formattedCost = formatter.format("%.2f", item.getItemCost());       // Formats current item's cost using formatter object.
                 System.out.println(item.getItemName() + "  £" + formattedCost);
             }
@@ -75,7 +76,7 @@ public class ItemView {
                 System.out.println("Enter the name of the item you want to vend: ");
                 String name = scan.nextLine();      // Stores all characters entered on keyboard before enter was hit (including whitespaces).
 
-                ItemDto itemNamed;          // QUESTION: would it be better to have this at the start of the method?
+                ItemDto itemNamed = null;
                 try {                       // Handles if the user enters an item with zero stock.
                     itemNamed = itemService.fetchItem(name);
                 } catch (NoItemInventoryException e1) {
@@ -117,8 +118,7 @@ public class ItemView {
                 }
 
                 System.out.println("Exiting program. Vending machine files have been updated. ");
-                // QUESTION:
-                // break; is unnecessary as the condition will fail on the next while loop anyway.
+                break;
 
             } else {        // User did not choose a valid option from the menu.
                 System.out.println("Invalid entry. Please select an option by entering only the number.");
